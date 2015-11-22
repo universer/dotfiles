@@ -153,6 +153,7 @@ alias route="netstat -r"
 alias listport="netstat -a | egrep 'Proto|LISTEN'"
 alias pylintc="pylint --rcfile=pylint.rc"
 alias nw="/Applications/nwjs.app/Contents/MacOS/nwjs"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # send color to anybar
 function anydot { echo -n $1 | nc -4u -w0 localhost ${2:-1738};  }

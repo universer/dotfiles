@@ -23,8 +23,9 @@ Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ervandew/supertab'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'SirVer/ultisnips'
+Plugin 'vim-scripts/cSyntaxAfter'
 Plugin 'honza/vim-snippets'
-
+Plugin 'vim-scripts/taglist.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 

@@ -3,7 +3,7 @@ so ~/.vim/plugins.vim
 
 syntax enable
 syntax on
-let mapleader=','           "设置lead键为,
+let mapleader=','                                             "The defualt leader is \, but a comma is much better.
 set bs=2                    "在insert模式下用退格键删除
 set backspace=indent,eol,start                                  "Make backspace behave like every other editor.
 set autoread                "文件在Vim之外修改过，自动重新读入
@@ -18,10 +18,10 @@ set noerrorbells visualbell t_vb=  "取消错误铃声
 set incsearch               "检索时增量高亮
 set hls                     "检索时高亮显示匹配项
 set ignorecase              "检索时忽略大小写
-"set autowriteall           "自动保存
+set autowriteall            "自动保存
 set complete=.,w,b,u        "设置自动补全
-set ruler                   "显示行号
-set showcmd                 "显示输入命令
+
+
 
 "--------------Visuals---------"
 colorscheme atom-dark       "主题
@@ -49,10 +49,8 @@ set list listchars=tab:··,trail:·,extends:»,precedes:«,nbsp:×       " 用�
 autocmd! bufreadpost * set noexpandtab | retab! 4                   " 读入是转换tab至空格，存入时用空格转换tab
 autocmd! bufwritepre * set expandtab | retab! 4
 autocmd! bufwritepost * set noexpandtab | retab! 4
-autocmd BufWritePre * :%s/\s\+$//e                                  "保存文件前trim行尾的空字符
 
-set foldmethod=syntax        "代码折叠
-
+"set foldmethod=syntax       "代码折叠
 "---------------Split Management---------"
 set splitbelow              "分屏出现在下边和右边
 set splitright
@@ -66,33 +64,30 @@ nmap <C-L> <C-W><C-L>
 "--------------Mappings---------"
 "Shortcut for Vimrc file.
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
-
+ 
 "Shortcut for zshrc file.
-nmap <Leader>ez :tabedit ~/.zshrc<cr>
-
-"Shortcut for git notes
-nmap <Leader>eg :tabedit ~/gitnotes<cr>
+nmap <Leader>ez :e ~/.zshrc<cr>
 
 "Shortcut for snippets file.
 nmap <Leader>es :UltiSnipsEdit<cr>
-
+ 
 "Shortcut for clear search hightlight
 nmap <Leader><space> :nohlsearch<cr>
 
 "Shortcut for search tag
 nmap <Leader>f :tag<space>
 
-"Shortcut for CtrlP Tag
+"Shortcut for CtrlP Tag 
 nmap <D-r> :CtrlPBufTag<cr>
 
 "Shortcut for most Recent File
 nmap <D-e> :CtrlPMRU<cr>
 
 "Shortcut for CtrlP
-"nmap <C-n> :CtrlP<cr>
+nmap <D-p> :CtrlP<cr>
 
 "Shortcut for PeepOpen
-nmap <C-p> :PeepOpen<cr>
+nmap <D-n> :PeepOpen<cr>
 
 "Reindent the code
 nmap <F7> mzgg=G`z
@@ -108,13 +103,13 @@ nmap <D-2> :NERDTreeFind<cr>
 
 
 "Shortcut for create a project
-nmap <Leader>cp :ProjectCreate . -n
+nmap <Leader>cp :ProjectCreate . -n 
 
 "--------------Auto-Commands---------"
 "Automatically source the Vimrc file on save."
 augroup autosourcing
     autocmd!
-    autocmd BufWritePost $MYVIMRC source %
+    autocmd BufWritePost $MYVIMRC source % 
 augroup END
 
 
@@ -149,12 +144,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "CSyntaxAfter
-autocmd! FileType c,cpp,java,scala call CSyntaxAfter()
-
-
-"----------------JSX Setting--------"
-let g:jsx_ext_required = 0
-
+autocmd! FileType c,cpp,java call CSyntaxAfter()
 
 "----------------Scala Setting--------"
 let g:scala_sort_across_groups=1
@@ -165,8 +155,7 @@ let s:tlist_def_scala_settings = 'scala;t:trait;c:class;T:type;' .
 
 autocmd FileType scala inoremap <Leader>s <Esc>:call SortScalaImports()<CR>
 autocmd FileType scala noremap <Leader>s <Esc>:call SortScalaImports()<CR>
-autocmd FileType scala noremap <A-CR> :ScalaImport<CR>
-autocmd FileType scala inoremap <A-CR> :ScalaImport<CR>
+
 "----------------PHP Setting--------"
 function! IPhpInsertUse()
     call PhpInsertUse()
@@ -182,67 +171,58 @@ vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\ -f2-" }'
 
 let g:php_cs_fixer_level="psr2"                 "vim-php-cs-fixer.vim
 
+
+
+
 "---------------Eclim Setting---
 autocmd FileType java noremap <A-CR> :JavaImport<CR>
 autocmd FileType java noremap <F7> :JavaFormat<CR>
 autocmd FileType java nmap <D-b> :JavaCallHierarchy<CR>
-
-
-"---------------Dash Setting---
-nmap <F12> :Dash<CR>
-
 "----------------Notes--------"
 
+"open Tags --- <C-]>
+"jump back --- ''
+"tab next --- gt,gT
 
 
-"--------------------------Global Search and Replace steps----------------
+"Replace steps
 "1. Gsearch "h2"
 "2. /src
 "3. press V and select the place to replace
 "4. Press : +  s/h2/h3
 "5. Greplace
 "6. a
+"gg - head
+"G - end of file
 
-"-----------------------Surround Operation---------------
-" ds' delete surrounding '
-" cs'" change surrounding ' to "
-" dst delete surrounding tag
-" selet text + S + Tag    Insert Tag
-" yss)      整行加（）
-" ysiw)     单词加）
+"ds' delete surrounding '
+"cs'" change surrounding ' to "
+"dst delete surrounding tag
+"selet text + S + Tag     Insert Tag
 
-"-----------------------Jump Operation---------------
+
+"---Something about jump
 "Ctrl I, O jump back and forth sequentailly
 "Ctl 6 -- toggling the file
-"open Tags --- <C-]>
-"jump back and forth --- ''
+"
+"
+"-----------Makers
+"m + any letter --- set a mark, lower key only for current Buffer, but upper case key will work for all files
+":marks ------ show marks
+"' + mark   ---- jump to that mark 
+"` + mark  ------jump back to the line and the column
+"'+0 ----jump to previous edit file
 
 
-"-----------------------Mark Operation---------------
-"  m + any letter --- set a mark, lower key only for current Buffer, but upper case key will work for all files
-"  :marks ------ show marks
-"  ' + mark ---- jump to that mark
-"  ` + mark  ------jump back to the line and the column
-"  '+0 ----jump to previous edit file
-
-
-"-----------------------Visual Operation---------------
+"----where select visual
 "you can use mark too, or you can use Ctrl D, Ctrl U to select
 "d'm delete to mark
 "c'm change to mark
-
-"-----------------------Indent Operation---------------
 "> indent
 "< undent
 
-"-----------------------Register Operation---------------
+
+
 "record q + any letter + action +q
 "call : @letter
 "show   :reg
-
-"   "kyy    copy current line to register k
-"   "kp     paste from register k
-"
-"
-"-----------------------Multi Cursor Operation---------------
-"<C-n> N time to multiSelect

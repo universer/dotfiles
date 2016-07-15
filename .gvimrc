@@ -1,7 +1,10 @@
-" Use the Solarized Dark theme
+set nomacligatures
 set background=dark
-colorscheme solarized
-" Use 14pt Monaco
-set guifont=Monaco:h14
-" Better line-height
-set linespace=8
+
+set guicursor=n:blinkon0            "π‚±Í≤ª…¡À∏
+
+if has("gui_macvim")
+    macmenu &File.Print key=<nop>
+    macmenu &File.New\ Window key=<nop>
+    macmenu &Tools.Make key=<nop>
+endif

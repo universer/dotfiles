@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/yichen/project/ym-user-service/src/test'
+let g:netrw_dirhist_2='/Users/yichen/project/ym-user-service/src/test/scala'
+let g:netrw_dirhist_3='/Users/yichen/project/ym-user-service/src/test/scala/com'
+let g:netrw_dirhist_4='/Users/yichen/project/ym-user-service/src/test/scala/com/yieldmo'
+let g:netrw_dirhist_5='/Users/yichen/project/ym-user-service/src/test/scala/com/yieldmo/service'
+let g:netrw_dirhist_6='/Users/yichen/project/ym-user-service/src/test/scala/com/yieldmo/service/dao'
+let g:netrw_dirhist_7='/Users/yichen/project/learn/react'
+let g:netrw_dirhist_8='/Users/yichen/project/learn/weekdays'
+let g:netrw_dirhist_9='/Users/yichen/project/learn'

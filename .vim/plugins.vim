@@ -18,7 +18,6 @@ Plugin 'rking/ag.vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'file:///Users/yichen/.vim/bundle/vim-peepopen'
-"Plugin 'StanAngeloff/php.vim'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ervandew/supertab'
 Plugin 'stephpy/vim-php-cs-fixer'
@@ -29,9 +28,12 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'editorconfig/editorconfig-vim'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Valloric/vim-operator-highlight'
+Plugin 'vim-scripts/TagHighlight'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'danro/rename.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 

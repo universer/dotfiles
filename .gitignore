@@ -14,4 +14,7 @@ Thumbs.db
 .Trashes
 
 # Vim swap file
-.swp
+.sw*
+
+# Ctag
+tags

@@ -1,4 +1,3 @@
-set nocompatible
 so ~/.vim/plugins.vim
 
 syntax enable
@@ -27,6 +26,7 @@ set showcmd                 "显示输入命令
 colorscheme atom-dark       "主题
 set t_Co=256
 set guifont=Fira_Code:h15   "字体
+set lines=50 columns=200
 set linespace=5             "设置行间距
 set laststatus=2            "总是显示状态行
 set number                  "显示行号
@@ -186,14 +186,49 @@ vmap <Leader>su ! awk '{ print length(), $0 \| "sort -n \| cut -d\\ -f2-" }'
 
 let g:php_cs_fixer_level="psr2"                 "vim-php-cs-fixer.vim
 
-"---------------Eclim Setting---
-autocmd FileType java noremap <A-CR> :JavaImport<CR>
-autocmd FileType java noremap <F7> :JavaFormat<CR>
-autocmd FileType java nmap <D-b> :JavaCallHierarchy<CR>
+"----------------JS Setting--------"
+
+"autocmd FileType javascript noremap <buffer>  <F7> :call JsBeautify()<cr>
+"" for json
+"autocmd FileType json noremap <buffer> <F7> :call JsonBeautify()<cr>
+"" for jsx
+"autocmd FileType jsx noremap <buffer> <F7> :call JsxBeautify()<cr>
+"" for html
+"autocmd FileType html noremap <buffer> <F7> :call HtmlBeautify()<cr>
+"" for css or scss
+"autocmd FileType css noremap <buffer> <F7> :call CSSBeautify()<cr>
+
+
+"----------------Syntastic Setting--------"
+let g:syntastic_javascript_checkers = ['eslint']
+
+"---------------javacomplete2 Setting---
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java nmap <A-CR>  <Plug>(JavaComplete-Imports-AddSmart)
+autocmd FileType java nmap <A-CR> <Plug>(JavaComplete-Imports-AddSmart)
 
 
 "---------------Dash Setting---
 nmap <F12> :Dash<CR>
+
+"---------------TagHighlight---
+nmap <F8> :UpdateTypesFile<CR>
+
+"--------------Syntastic---
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"---------------Operator Highlight---
+let g:ophigh_color_gui = "#FFD700"
+
 
 
 "---------------SuperLine Setting---

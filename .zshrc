@@ -91,4 +91,4 @@ alias ql='quick-look'
 alias cat=ccat
 alias ctagsscala='ctags -R . --exclude=target --exclude=project --exclude=build'
 alias ctagsphp='ctags -R --PHP-kinds=+cf'
-
+alias cdp='cd ~/project'

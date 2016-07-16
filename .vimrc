@@ -46,13 +46,10 @@ set showmatch               "代码匹配
 set ai                      "自动缩进
 set tabstop=4 softtabstop=4 shiftwidth=4                            " 一个tab四个空格
 set list listchars=tab:··,trail:·,extends:»,precedes:«,nbsp:×       " 用点来显示tab
-autocmd! bufreadpost * set noexpandtab | retab! 4                   " 读入是转换tab至空格，存入时用空格转换tab
-autocmd! bufwritepre * set expandtab | retab! 4
-autocmd! bufwritepost * set noexpandtab | retab! 4
+"autocmd! bufwritepost * set noexpandtab | retab! 4					"读入是转换tab至空格，存入时用空格转换tab
 autocmd BufWritePre * :%s/\s\+$//e                                  "保存文件前trim行尾的空字符
 
-set foldmethod=syntax        "代码折叠
-
+"set foldmethod=syntax       "代码折叠
 "---------------Split Management---------"
 set splitbelow              "分屏出现在下边和右边
 set splitright
@@ -117,6 +114,17 @@ augroup autosourcing
     autocmd BufWritePost $MYVIMRC source %
 augroup END
 
+"Automatically source the Vimrc file on save."
+augroup autosourcing2
+    autocmd!
+    autocmd BufWritePost ~/.vim/plugins.vim source %
+augroup END
+
+"Automatically source the zshrc file on save."
+augroup autosourcing1
+    autocmd!
+    autocmd BufWritePost ~/.zshrc !source ~/.zshrc
+augroup END
 
 "----------------Plugin Setting--------"
 "CtrlP
@@ -147,10 +155,6 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-"CSyntaxAfter
-autocmd! FileType c,cpp,java,scala call CSyntaxAfter()
-
 
 "----------------JSX Setting--------"
 let g:jsx_ext_required = 0
@@ -190,6 +194,32 @@ autocmd FileType java nmap <D-b> :JavaCallHierarchy<CR>
 
 "---------------Dash Setting---
 nmap <F12> :Dash<CR>
+
+
+"---------------SuperLine Setting---
+set rtp+=/Library/Python/2.7/site-packages/powerline/bindings/vim
+
+" These lines setup the environment to show graphics and colors correctly.
+set nocompatible
+set t_Co=256
+
+let g:minBufExplForceSyntaxEnable = 1
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+if ! has('gui_running')
+   set ttimeoutlen=10
+   augroup FastEscape
+      autocmd!
+      au InsertEnter * set timeoutlen=0
+      au InsertLeave * set timeoutlen=1000
+   augroup END
+endif
+
+set laststatus=2 " Always display the statusline in all windows
+set guifont=Inconsolata\ for\ Powerline:h14
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 "----------------Notes--------"
 
@@ -246,3 +276,4 @@ nmap <F12> :Dash<CR>
 "
 "-----------------------Multi Cursor Operation---------------
 "<C-n> N time to multiSelect
+"

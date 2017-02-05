@@ -1,0 +1,5 @@
+syn keyword CTagsInterface Bar
+syn keyword CTagsGlobalVariable a b bar foo fooBar mergedOptions theSwitch array FOO options
+syn keyword CTagsFunction reverseBoolean transformText bar __construct sampleFunction
+syn keyword CTagsClass Bar FooBar BarBaz Base_Controller Aaa Foo Def
+

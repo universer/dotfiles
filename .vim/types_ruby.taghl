@@ -1,0 +1,2 @@
+syn keyword CTagsMethod set_file_content get_file_content after test_editorconfig type before
+
